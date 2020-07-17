@@ -1,0 +1,9 @@
+name: Observer
+version: ${project.version}
+main: masa3mc.observer.Observer
+api-version: 1.16
+commands:
+  ob:
+    usage: /ob [player name]
+  Observer:
+    usage: /Observer [player name]
