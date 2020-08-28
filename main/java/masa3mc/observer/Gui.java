@@ -55,23 +55,28 @@ public class Gui implements CommandExecutor {
                     ArrayList<String> lore = new ArrayList<String>();
                     lore.add(ChatColor.WHITE + "mcid:" + ChatColor.GREEN  + t.getName());
                     lore.add(ChatColor.WHITE + "uuid:" + ChatColor.GREEN  + t.getUniqueId());
-                    lore.add(ChatColor.WHITE + "hp:" + ChatColor.GREEN  + t.getHealth());
+                    lore.add(ChatColor.WHITE + "hp:" + ChatColor.GREEN  + t.getHealth() + "/20");
+                    lore.add(ChatColor.WHITE + "food:" + ChatColor.GREEN  + t.getFoodLevel() + "/20");
                     lore.add(ChatColor.WHITE + "level:" + ChatColor.GREEN  + t.getLevel());
                     lore.add(ChatColor.WHITE + "gamemode:" + ChatColor.GREEN  + t.getGameMode());
                     lore.add(ChatColor.WHITE + "world:" + ChatColor.GREEN + t.getWorld().getName());
-                    lore.add(ChatColor.WHITE + "x:" + ChatColor.GREEN  + (int)t.getLocation().getX());
-                    lore.add(ChatColor.WHITE + "y:" + ChatColor.GREEN  + (int)t.getLocation().getY());
-                    lore.add(ChatColor.WHITE + "z:" + ChatColor.GREEN  + (int)t.getLocation().getZ());
+                    lore.add(ChatColor.WHITE + "x:" + ChatColor.GREEN  + (int)t.getLocation().getX() + ChatColor.WHITE + "y:" + ChatColor.GREEN  + (int)t.getLocation().getY() + ChatColor.WHITE + "z:" + ChatColor.GREEN  + (int)t.getLocation().getZ());
                     lore.add(ChatColor.WHITE + "fly:" + ChatColor.GREEN  + t.getAllowFlight());
                     meta4.setLore(lore);
                     itemStack4.setItemMeta(meta4);
                     inv.setItem(16, itemStack4);
 
-                    ItemStack itemStack5 = new ItemStack(Material.BARRIER);
+                    ItemStack itemStack5 = new ItemStack(Material.ICE);
                     ItemMeta meta5 = itemStack5.getItemMeta();
-                    meta5.setDisplayName(ChatColor.RED + "close");
+                    meta5.setDisplayName(ChatColor.AQUA + "freeze");
                     itemStack5.setItemMeta(meta5);
-                    inv.setItem(26, itemStack5);
+                    inv.setItem(22, itemStack5);
+
+                    ItemStack itemStack6 = new ItemStack(Material.BARRIER);
+                    ItemMeta meta6 = itemStack6.getItemMeta();
+                    meta6.setDisplayName(ChatColor.RED + "close");
+                    itemStack6.setItemMeta(meta6);
+                    inv.setItem(26, itemStack6);
 
                     player.openInventory(inv);
                     return true;
