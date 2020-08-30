@@ -24,11 +24,8 @@ public class Gui implements CommandExecutor {
             Player player = ((Player) sender).getPlayer();
             if(player.hasPermission("ob.gui")){
                 if(args.length == 1){
-                    Player t = Bukkit.getPlayer(args[0]);
-                    if(!t.isOnline()){
-                        player.sendMessage(ChatColor.RED +"そのプレイヤーはオンラインではありません。");
-                        return true;
-                    }
+                    Player t = Bukkit.getServer().getPlayerExact(args[0]);
+                    if(t != null){
                     obs.put(((Player) sender).getPlayer(),Bukkit.getPlayer(args[0]));
                     Inventory inv = Bukkit.createInventory(null, 27, ChatColor.GOLD + "ObserverGUI");
                     ItemStack itemStack1 = new ItemStack(Material.CHEST);
@@ -66,12 +63,6 @@ public class Gui implements CommandExecutor {
                     itemStack4.setItemMeta(meta4);
                     inv.setItem(16, itemStack4);
 
-                    ItemStack itemStack5 = new ItemStack(Material.ICE);
-                    ItemMeta meta5 = itemStack5.getItemMeta();
-                    meta5.setDisplayName(ChatColor.AQUA + "freeze");
-                    itemStack5.setItemMeta(meta5);
-                    inv.setItem(22, itemStack5);
-
                     ItemStack itemStack6 = new ItemStack(Material.BARRIER);
                     ItemMeta meta6 = itemStack6.getItemMeta();
                     meta6.setDisplayName(ChatColor.RED + "close");
@@ -79,16 +70,18 @@ public class Gui implements CommandExecutor {
                     inv.setItem(26, itemStack6);
 
                     player.openInventory(inv);
-                    return true;
+                    }else {
+                        player.sendMessage(ChatColor.RED + "Offline or no data exists");
+                    }
                 }else {
                     player.sendMessage(ChatColor.RED + "/ob [player name]");
-                    return true;
                 }
+            }else {
+                player.sendMessage("&cYou don't have permission.");
             }
         }else {
             sender.sendMessage(ChatColor.RED + "you cannot use this cmd! this cmd is player only!");
-            return true;
         }
-        return false;
+        return true;
     }
 }

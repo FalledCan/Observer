@@ -5,5 +5,7 @@ api-version: 1.16
 commands:
   ob:
     usage: /ob [player name]
+    description: open gui
   Observer:
     usage: /Observer [player name]
+    description: open gui
